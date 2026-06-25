@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+         version="6.0">
+
+    <display-name>Digital Permit-to-Work (PTW) System</display-name>
+
+    <!-- Session Initialization Listener -->
+    <listener>
+        <listener-class>com.steelplant.ptw.listener.SessionInitListener</listener-class>
+    </listener>
+
+    <!-- Servlets -->
+    <servlet>
+        <servlet-name>DashboardServlet</servlet-name>
+        <servlet-class>com.steelplant.ptw.servlet.DashboardServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DashboardServlet</servlet-name>
+        <url-pattern>/dashboard</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>PermitServlet</servlet-name>
+        <servlet-class>com.steelplant.ptw.servlet.PermitServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PermitServlet</servlet-name>
+        <url-pattern>/permit</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ApprovalServlet</servlet-name>
+        <servlet-class>com.steelplant.ptw.servlet.ApprovalServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ApprovalServlet</servlet-name>
+        <url-pattern>/approve</url-pattern>
+    </servlet-mapping>
+
+    <session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
+
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+</web-app>
