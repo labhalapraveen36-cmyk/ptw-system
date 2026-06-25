@@ -6,10 +6,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DatabaseUtil {
-    private static final String DB_NAME = "ptw_db";
-    private static final String URL = "jdbc:mysql://localhost:3306/" + DB_NAME + "?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true";
-    private static final String USER = "root";
-    private static final String PASSWORD = "Praveen@9014";
+    private static final String DB_NAME = "defaultdb";
+    private static final String URL = "jdbc:mysql://mysql-387b0c09-labhalapraveen36-9671.h.aivencloud.com:16196/" + DB_NAME + "?sslMode=REQUIRED";
+    private static final String USER = "avnadmin";
+    private static final String PASSWORD = "AVNS_5sKekEakuHWyiLrVIh9";
 
     static {
         try {

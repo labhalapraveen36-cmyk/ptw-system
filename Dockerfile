@@ -1,15 +1,22 @@
-# Use the official Tomcat 10 image with Java 17
+# Stage 1: Build the application using Maven
+FROM maven:3.9.5-eclipse-temurin-17 AS build
+WORKDIR /app
+
+# Copy the pom.xml and source code
+COPY pom.xml .
+COPY src ./src
+
+# Build the WAR file inside the container
+RUN mvn clean package -DskipTests
+
+# Stage 2: Run the application using Tomcat
 FROM tomcat:10.1.14-jdk17
 
-# Remove the default Tomcat webapps to keep it clean
+# Remove default Tomcat webapps
 RUN rm -rf /usr/local/tomcat/webapps/*
 
-# Copy the built WAR file from the Maven target directory to Tomcat's webapps directory
-# Renaming it to ROOT.war ensures it serves on the root path (/) instead of (/digital-ptw-system)
-COPY target/digital-ptw-system.war /usr/local/tomcat/webapps/ROOT.war
+# Copy the built WAR file from the Maven build stage
+COPY --from=build /app/target/digital-ptw-system.war /usr/local/tomcat/webapps/ROOT.war
 
-# Expose the default Tomcat port
 EXPOSE 8080
-
-# Start the Tomcat server
 CMD ["catalina.sh", "run"]
