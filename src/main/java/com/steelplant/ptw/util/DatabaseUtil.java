@@ -7,7 +7,7 @@ import java.sql.Statement;
 
 public class DatabaseUtil {
     private static final String DB_NAME = "defaultdb";
-    private static final String URL = "jdbc:mysql://mysql-387b0c09-labhalapraveen36-9671.h.aivencloud.com:16196/" + DB_NAME + "?sslMode=REQUIRED";
+    private static final String URL = "jdbc:mysql://mysql-387b0c09-labhalapraveen36-9671.h.aivencloud.com:16196/" + DB_NAME + "?useSSL=true&requireSSL=true";
     private static final String USER = "avnadmin";
     private static final String PASSWORD = "AVNS_5sKekEakuHWyiLrVIh9";
 
